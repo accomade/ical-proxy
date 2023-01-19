@@ -6,6 +6,7 @@ import (
 	"os"
 	"runtime"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -33,6 +34,7 @@ func StartGin() {
 
 	router := gin.New()
 	router.Use(rateLimit, gin.Recovery())
+	router.Use(cors.Default())
 	router.GET("/ical/:url", ical)
 
 	port := os.Getenv("PORT")
