@@ -32,6 +32,7 @@ func ical(c *gin.Context) {
 	if err != nil {
 		log.Printf("Error fetching cal: %v", err)
 		c.String(400, "Something's off on request creation")
+		return
 	}
 
 	client := http.Client{
@@ -41,6 +42,7 @@ func ical(c *gin.Context) {
 	if err != nil {
 		log.Printf("Error fetching cal: %v", err)
 		c.String(400, "Something's off while fetching")
+		return
 	}
 	defer resp.Body.Close()
 
@@ -48,6 +50,8 @@ func ical(c *gin.Context) {
 	if err != nil {
 		log.Printf("Error fetching cal: %v", err)
 		c.String(400, "Something's off with resp Body")
+		return
 	}
+
 	c.String(200, string(b))
 }
