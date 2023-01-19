@@ -36,6 +36,9 @@ func StartGin() {
 	router.Use(rateLimit, gin.Recovery())
 	router.Use(cors.Default())
 	router.GET("/ical/:url", ical)
+	router.GET("/", func(c *gin.Context) {
+		c.String(200, "OK")
+	})
 
 	port := os.Getenv("PORT")
 	if port == "" {
