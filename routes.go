@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,7 +35,7 @@ func ical(c *gin.Context) {
 	}
 
 	client := http.Client{
-		Timeout: 1000,
+		Timeout: 5 * time.Second,
 	}
 	resp, err := client.Do(req)
 	if err != nil {
