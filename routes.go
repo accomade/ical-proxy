@@ -25,7 +25,7 @@ func rateLimit(c *gin.Context) {
 }
 
 func ical(c *gin.Context) {
-	url := c.Param("url")
+	url := c.Query("url")
 
 	req, err := http.NewRequest(http.MethodGet, url, nil) //c.Request.Response.Body)
 	if err != nil {
