@@ -16,7 +16,7 @@ func rateLimit(c *gin.Context) {
 	if value%50 == 0 {
 		fmt.Printf("ip: %s, count: %d\n", ip, value)
 	}
-	if value >= 200 {
+	if value >= 1000 {
 		if value%200 == 0 {
 			fmt.Println("ip blocked")
 		}
