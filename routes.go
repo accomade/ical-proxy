@@ -28,6 +28,7 @@ func rateLimit(c *gin.Context) {
 func ical(c *gin.Context) {
 	url := c.Query("url")
 
+	log.Printf("Accessing calURL %s", url)
 	req, err := http.NewRequest(http.MethodGet, url, nil) //c.Request.Response.Body)
 	if err != nil {
 		log.Printf("Error fetching cal: %v", err)
